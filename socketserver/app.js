@@ -18,11 +18,22 @@ io.on('connection', (socket) => {
     // 이벤트 호출 => socket.emit('이벤트 이름', params);
     // 이벤트 받음 => socket.on('이벤트 이름', (params));
     
-    socket.emit('hello', "안녕하세요");
+    // socket.emit('hello', "안녕하세요");
 
-    io.emit('hello everyone', "모두 안녕하세요");
+    // io.emit('hello everyone', "모두 안녕하세요");
+    io.emit('sendText', {
+      text: '서버에서 넘어온 값이에요',
+    });
+
+    socket.on('send Message', (data) => { // data=> string
+      io.emit('send Message', {
+        text: data,
+      });
+    });
     
-})
+});
+
+
 
 // react port 3000 번이랑 연결을 해줘야한다.
 // TCP/IP 는 연결지향을 주로 사용함. 1대1로 연결을 시켜놓고 데이터를 이동하는 방식

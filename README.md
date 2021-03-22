@@ -82,3 +82,29 @@ function App() {
 }
 ```
 
+
+
+단어의 동적 표시를 위해 State 를 사용한다.
+
+```javascript
+  useEffect(() => {
+    setText([...Text, {"text": "끄아아아ㅇ"}]); // 이런 방식으로 동적으로 텍스트를 주가할 수 있다.
+  }, []);
+
+```
+
+state를 통해 값을 동적으로 변경할 수 있다.
+
+
+
+# SocketServer
+
+```javascript
+io.on('send Message', (data) => { // data=> string
+      io.emit('send Message', {
+        text: data,
+      });
+    });
+```
+
+다음 코드를 이용해 메시지를 받자 마자 모든 사람들에게 전달해 준다.
